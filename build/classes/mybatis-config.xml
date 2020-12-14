@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?> 
+			<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- 读取application.properties文件中的数据key-value的形式 -->
+		<properties resource="application.properties">
+		  <!-- 注意:是applications.properties文件中的值优先级高 -->
+		  <property name="jdbc.username" value="b" /> 
+		  <property name="jdbc.password" value="briup" /> 
+		</properties> 
+	<typeAliases>
+		<typeAlias alias="Student" type="briup.pojo.Student" />
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED"> 
+				<property name="driver" value="${jdbc.driverClassName}" /> 
+				<property name="url" value="${jdbc.url}" /> 
+				<property name="username" value="${jdbc.username}" /> 
+				<property name="password" value="${jdbc.password}" /> 
+			  </dataSource> 
+		 
+			 	<!--<dataSource type="POOLED">
+				 <property name="driver" value="com.mysql.jdbc.Driver" /> <property 
+					name="url" value="jdbc:mysql://localhost:3306/test" />
+				<property name="driver"
+					value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url"
+					value="jdbc:oracle:thin:@127.0.0.1:1521:XE" />
+				<property name="username" value="briup" />
+				<property name="password" value="b" />
+			</dataSource>
+			 -->
+			
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="briup/mappers/StudentMapper.xml" />
+	</mappers>
+</configuration> 
